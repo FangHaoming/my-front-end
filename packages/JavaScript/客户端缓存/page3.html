@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<head>
+    <script type="text/javascript">
+        window.onload=() => {
+            sessionStorage.setItem('page3','page3')
+            console.log(sessionStorage.getItem('page3'))
+            let node = document.createElement('h2');
+            node.innerHTML = 'page1: ' + sessionStorage.getItem('page1');
+            document.getElementById('#h').appendChild(node);
+            node = document.createElement('h2');
+            node.innerHTML = 'page2: ' + sessionStorage.getItem('page2');
+            document.getElementById('#h').appendChild(node);
+        }
+    </script>
+</head>
+
+<body>
+    <h1 id='#h'>Page3</h1>
+    <a href='./page2.html'>跳转到page2</a>
+</body>
+
+</html>

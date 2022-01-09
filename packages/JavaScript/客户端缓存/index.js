@@ -22,6 +22,7 @@ let
     db_transaction,
     db_objectStore;
 
+//打开数据库，不存在则创建
 db_reqest = indexedDB.open(db_name, db_version);
 db_reqest.onerror = (event) => {
     alert('Failed to open IndexedDB');
@@ -87,14 +88,16 @@ db_reqest.onupgradeneeded = (event) => {
     console.log('onupgradeneeded');
     db = event.target.result;
     if (!db.objectStoreNames.contains('users-table')) {
-        db_objectStore = db.createObjectStore('users-table', { //ObjectStore数据表,只能在onupgradeneeded创建（存储空间名称，存储对象的属性）
+        //ObjectStorex存储空间(存储空间名称，存储属性配置)，相当于数据表,只能在onupgradeneeded创建
+        db_objectStore = db.createObjectStore('users-table', {
             keyPath: "id",
             autoIncrement: true
         });
-        db_objectStore.createIndex('firstname', 'firstname', { //Indext相当于一列，（索引，指定构建索引的存储数据的属性，配置对象）
+        //Indext(索引，指定构建索引的存储数据的属性，配置对象),相当于数据表中的列
+        db_objectStore.createIndex('firstname', 'firstname', { 
             unique: false
         })
-        db_objectStore.createIndex('lastname', 'lastname', { //Indext相当于一列，（索引，指定构建索引的存储数据的属性，配置对象）
+        db_objectStore.createIndex('lastname', 'lastname', { 
             unique: true
         })
         console.log('ObjectStore users-table created');

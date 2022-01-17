@@ -2,22 +2,25 @@
 
 <head>
     <script type="text/javascript">
-        window.onload=() => {
-            sessionStorage.setItem('page3','page3')
-            console.log(sessionStorage.getItem('page3'))
-            let node = document.createElement('h2');
-            node.innerHTML = 'page1: ' + sessionStorage.getItem('page1');
-            document.getElementById('#h').appendChild(node);
-            node = document.createElement('h2');
-            node.innerHTML = 'page2: ' + sessionStorage.getItem('page2');
-            document.getElementById('#h').appendChild(node);
+        window.onload = () => {
+            sessionStorage.setItem('page3', 'data set in page3')
+            for (let i = 0; i < sessionStorage.length; i++) {
+                document.getElementById('cur').innerHTML += '</br>' + sessionStorage.key(i) + " : \"" +
+                    sessionStorage.getItem(sessionStorage.key(i)) + "\"";
+            }
         }
     </script>
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
-    <h1 id='#h'>Page3</h1>
-    <a href='./page2.html'>跳转到page2</a>
+    <button onclick='window.location.reload()'>fresh</button>
+    <h1 id='cur'>now in Page3</h1>
+    <a href='./page2.html'>To page2(a href)</a>
 </body>
 
 </html>

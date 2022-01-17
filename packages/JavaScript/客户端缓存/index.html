@@ -1,5 +1,22 @@
 <!DOCTYPE html>
+
 <head>
-    <script src="./index.js"></script>
+    <script>
+        window.onload = () => {
+            sessionStorage.setItem('parent','data set in parent');
+            for (let i = 0; i < sessionStorage.length; i++) {
+                document.getElementById('cur').innerHTML += '</br>' + sessionStorage.key(i) + " : \"" +
+                    sessionStorage.getItem(sessionStorage.key(i)) + "\"";
+            }
+        }
+    </script>
 </head>
+
+<body>
+    <button onclick='window.location.reload(false)'>fresh</button>
+    <div id='cur'>now in parent</div>
+    <iframe width='500' height="500" src='./page1.html'></iframe>
+    <iframe width='500' height="500" src='./page2.html'></iframe>
+</body>
+
 </html>

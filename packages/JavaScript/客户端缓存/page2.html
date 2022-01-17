@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 
 <head>
-    <title>name</title>
     <script type="text/javascript">
         window.onload = () => {
-            sessionStorage.setItem('page2', 'page2');
-            console.log(sessionStorage.getItem('page2'))
-            let node = document.createElement('h2');
-            node.innerHTML = 'page1: ' + sessionStorage.getItem('page1');
-            document.getElementById('#h').appendChild(node);
-            node = document.createElement('h2');
-            node.innerHTML = 'page3: ' + sessionStorage.getItem('page3');
-            document.getElementById('#h').appendChild(node);
+            sessionStorage.setItem('page2', 'data set in page2');
+            for (let i = 0; i < sessionStorage.length; i++) {
+                document.getElementById('cur').innerHTML += '</br>' + sessionStorage.key(i) + " : \"" +
+                    sessionStorage.getItem(sessionStorage.key(i)) + "\"";
+            }
         }
     </script>
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
-    <h1 id='#h'>Page2</h1>
-    <a href='./page3.html' >跳转到page3</a>
-    <a href='./page1.html' >跳转到page1</a>
+    <button onclick='window.location.reload()'>fresh</button>
+    <h1 id='cur'>now in Page2</h1>
+    <a href='./page3.html'>To page3(target='_blank' rel="opener")</a></br>
+    <a href='' onclick="window.open('./page1.html')">To page1(window.open())</a>
 </body>
 
 </html>

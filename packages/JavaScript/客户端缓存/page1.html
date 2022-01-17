@@ -1,26 +1,26 @@
 <!DOCTYPE html>
+
 <head>
-    
     <script type="text/javascript">
-        
-        window.onload=() => {
-            sessionStorage.setItem('page1','page1');
-            console.log(sessionStorage.getItem('page1'))
-            let node = document.createElement('h2');
-            node.innerHTML = 'page2: ' + sessionStorage.getItem('page2');
-            document.getElementById('#h').appendChild(node);
-            node = document.createElement('h2');
-            node.innerHTML = 'page3: ' + sessionStorage.getItem('page3');
-            document.getElementById('#h').appendChild(node);
+        window.onload = () => {
+            sessionStorage.setItem('page1', 'data set in page1');
+            for (let i = 0; i < sessionStorage.length; i++) {
+                document.getElementById('cur').innerHTML += '</br>' + sessionStorage.key(i) + " : \"" +
+                    sessionStorage.getItem(sessionStorage.key(i)) + "\"";
+            }
         }
-        /* window.onclick=()=>{
-            window.open('./page2.html')
-        } */
-        
-        </script>
+    </script>
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
 </head>
-<body>
-    <h1 id='#h'>Page1</h1>
-    <a href='./page2.html' target='blank'>跳转到page2</a>
+
+<br>
+    <button onclick='window.location.reload(false)'>fresh</button>
+    <h1 id='cur'>now in Page1</h1>
+    <a href='./page2.html' target='_blank'>To page2(target='_blank')</a>
 </body>
+
 </html>

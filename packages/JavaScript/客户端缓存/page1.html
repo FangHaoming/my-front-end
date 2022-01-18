@@ -3,7 +3,6 @@
 <head>
     <script type="text/javascript">
         window.onload = () => {
-            sessionStorage.setItem('page1', 'data set in page1');
             for (let i = 0; i < sessionStorage.length; i++) {
                 document.getElementById('cur').innerHTML += '</br>' + sessionStorage.key(i) + " : \"" +
                     sessionStorage.getItem(sessionStorage.key(i)) + "\"";
@@ -19,8 +18,11 @@
 
 <br>
     <button onclick='window.location.reload(false)'>fresh</button>
+    <button onclick="sessionStorage.setItem('page1','data set in page1')">set page1</button>
+    <button onclick="sessionStorage.setItem('page2','data set in page1')">set page2</button>
+    <button onclick="sessionStorage.setItem('page3','data set in page1')">set page3</button>
     <h1 id='cur'>now in Page1</h1>
-    <a href='./page2.html' target='_blank'>To page2(target='_blank')</a>
+    <a href='./page2.html' target='_blank'>To page2(target='_blank')打开未命名tag，无关系</a>
 </body>
 
 </html>

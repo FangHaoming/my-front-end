@@ -3,7 +3,6 @@
 <head>
     <script type="text/javascript">
         window.onload = () => {
-            sessionStorage.setItem('page2', 'data set in page2');
             for (let i = 0; i < sessionStorage.length; i++) {
                 document.getElementById('cur').innerHTML += '</br>' + sessionStorage.key(i) + " : \"" +
                     sessionStorage.getItem(sessionStorage.key(i)) + "\"";
@@ -11,7 +10,7 @@
         }
     </script>
     <style>
-        a{
+        a {
             text-decoration: none;
         }
     </style>
@@ -19,8 +18,11 @@
 
 <body>
     <button onclick='window.location.reload()'>fresh</button>
+    <button onclick="sessionStorage.setItem('page1','data set in page2')">set page1</button>
+    <button onclick="sessionStorage.setItem('page2','data set in page2')">set page2</button>
+    <button onclick="sessionStorage.setItem('page3','data set in page2')">set page3</button>
     <h1 id='cur'>now in Page2</h1>
-    <a href='./page3.html'>To page3(target='_blank' rel="opener")</a></br>
+    <a href='./page3.html' target="_blank" rel='opener'>To page3(target='_blank' rel="opener")打开新页面，复制会话</a></br>
     <a href='' onclick="window.open('./page1.html')">To page1(window.open())</a>
 </body>
 
